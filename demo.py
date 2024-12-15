@@ -39,7 +39,7 @@ def main():
         st.markdown("---")
         st.markdown("### History")
         for idx, (url, time) in enumerate(st.session_state.conversion_history[-5:]):
-            st.markdown(f"{idx+1}. [{url}]({url})")
+            st.markdown(f"{idx+1}. [{url[:20]}]({url})")
 
     # Main content
     st.title("URL to Markdown Converter")
@@ -67,22 +67,23 @@ def main():
                 markdown, metadata = process_url(
                     url=url, 
                     api_key=api_key, 
-                    temperature=temperature
+                    # temperature=temperature
                 )
 
                 st.session_state.conversion_history.append((url, datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+                tab1, tab2, tab3 = st.tabs(["Raw", "Preview", "Metadata"])
 
-                # Display results
-                st.markdown("### Markdown Output")
-                st.text_area("Generated Markdown", markdown, height=400)
+                with tab1:
+                    st.text_area("Generated Markdown", markdown, height=400)
 
-                # Display preview
-                st.markdown("### Preview")
-                st.markdown(markdown)
+                with tab2:
+                    st.markdown(markdown)
 
-                # Display metadata
-                st.markdown("### Metadata")
-                st.json(metadata)
+                with tab3:
+                    st.json(metadata)
+
+                # horizontal rule
+                st.markdown("---")
 
                 # Export options
                 st.markdown("### Export Options")
@@ -103,10 +104,6 @@ def main():
             st.error(f"Error processing URL: {str(e)}")
         except Exception as e:
             st.error(f"Unexpected error: {str(e)}")
-
-    if col2.button("Clear History"):
-        st.session_state.conversion_history = []
-        st.experimental_rerun()
 
 
 if __name__ == "__main__":
