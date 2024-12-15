@@ -39,5 +39,5 @@ This utility package extracts structured markdown content from web URLs using `u
     streamlit run demo.py
     ```
 
-- [Live demo](https://share.streamlit.io/ndamulelonemakh/u2md/main/demo.py)
+- [Live demo](https://u2md-live.streamlit.app/)
 
