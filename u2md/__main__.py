@@ -18,8 +18,8 @@ def create_parser() -> argparse.ArgumentParser:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  %(prog)s https://example.com --output markdown.md
-  %(prog)s https://example.com --metadata meta.json --log-file conversion.log
+  %(prog)s https://docs.python.org/3/library/typing.html --output python-typing.md
+  %(prog)s https://docs.python.org/3/library/typing.html --metadata meta.json --log-file conversion.log
         """
     )
 
