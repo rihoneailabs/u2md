@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "u2md"
+version = "0.1.0"
+description = "Utility package to extract structured markdown content from web URLs using `unstructured` and `Google's Gemini API`"
+authors = ["ndamulelo <nbanzyme@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11, <3.13"
+httpx = "^0.28.1"
+google-generativeai = "^0.8.3"
+unstructured = "^0.16.11"
+
+[tool.poetry.scripts]
+u2md = "u2md.__main__:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
