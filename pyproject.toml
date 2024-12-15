@@ -14,6 +14,9 @@ unstructured = "^0.16.11"
 [tool.poetry.scripts]
 u2md = "u2md.__main__:main"
 
+[tool.poetry.group.dev.dependencies]
+streamlit = "^1.41.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
